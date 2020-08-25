@@ -4,20 +4,38 @@ import HomePage from './Pages/HomePage/HomePage'
 import ShopPage from './Pages/ShopPage/ShopPage'
 import SignInPage from './Pages/SignInPage/SignInPage'
 import Header from './Components/Header/Header'
+import { auth } from './firebase/firebase.utils'
+
 import './App.css';
 
 
-function App() {
-  return (
-    <div>
-      <Header />
-      <Switch>
-        <Route exact path='/' component={HomePage} ></Route>
-        <Route path='/shop' component={ShopPage}></Route>
-        <Route path='/signin' component={SignInPage}></Route>
-      </Switch>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      currentUser: null
+    }
+  }
+
+  componentDidMount() {
+    auth.onAuthStateChanged(user => {
+      this.setState({ currentUser: user })
+    })
+  }
+
+
+  render() {
+    return (
+      <div>
+        <Header />
+        <Switch>
+          <Route exact path='/' component={HomePage} ></Route>
+          <Route path='/shop' component={ShopPage}></Route>
+          <Route path='/signin' component={SignInPage}></Route>
+        </Switch>
+      </div>
+    );
+  }
 }
 
 export default App
