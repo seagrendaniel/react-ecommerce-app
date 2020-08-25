@@ -1,7 +1,8 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import HomePage from './Pages/HomePage/HomePage'
 import ShopPage from './Pages/ShopPage/ShopPage'
+import SignInPage from './Pages/SignInPage/SignInPage'
 import Header from './Components/Header/Header'
 import './App.css';
 
@@ -13,9 +14,10 @@ function App() {
       <Switch>
         <Route exact path='/' component={HomePage} ></Route>
         <Route path='/shop' component={ShopPage}></Route>
+        <Route path='/signin' component={SignInPage}></Route>
       </Switch>
     </div>
   );
 }
 
-export default App;
+export default App
