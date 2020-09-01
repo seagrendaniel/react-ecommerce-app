@@ -1,11 +1,15 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import {createStructuredSelector} from 'reselect'
+import { createStructuredSelector } from 'reselect'
+
 import HomePage from './Pages/HomePage/HomePage'
 import ShopPage from './Pages/ShopPage/ShopPage'
 import SignInPage from './Pages/SignInPage/SignInPage'
+import CheckoutPage from './Pages/CheckoutPage/CheckoutPage'
+
 import Header from './Components/Header/Header'
+
 import { auth, createUserProfileDocument } from './firebase/firebase.utils'
 import { setCurrentUser } from './redux/user/user.actions'
 import { selectCurrentUser } from './redux/user/user.selectors'
@@ -42,11 +46,11 @@ class App extends React.Component {
       <div>
         <Header />
         <Switch>
-          <Route exact path='/' component={HomePage} ></Route>
-          <Route path='/shop' component={ShopPage}></Route>
+          <Route exact path='/' component={HomePage} />
+          <Route path='/shop' component={ShopPage} />
           <Route exact path='/signin'
-            render={() => this.props.currentUser ? (<Redirect to="/" />) : (<SignInPage />)}>
-          </Route>
+            render={() => this.props.currentUser ? (<Redirect to="/" />) : (<SignInPage />)} />
+          <Route exact path="/checkout" component={CheckoutPage} />
         </Switch>
       </div>
     );
