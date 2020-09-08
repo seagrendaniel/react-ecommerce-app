@@ -49,6 +49,7 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
   return await batch.commit()
 }
 
+
 export const convertCollectionsSnapshotToMap = (collections) => {
   const transformedCollection = collections.docs.map(doc => {
     const {title, items} = doc.data()
@@ -60,8 +61,9 @@ export const convertCollectionsSnapshotToMap = (collections) => {
       items
     }
   })
+
   return transformedCollection.reduce((accumulator, collection) => {
-    accumulator[collections.title.toLowerCase()] = collection
+    accumulator[collection.title.toLowerCase()] = collection
     return accumulator
   }, {})
 }
