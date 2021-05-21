@@ -17,7 +17,9 @@ import './App.css';
 
 
 class App extends React.Component {
+  
   unsubscribeFromAuth = null
+  unsubscribeFromAuth0 = null
 
   componentDidMount() {
     const {checkUserSession} = this.props
