@@ -15,6 +15,7 @@ class ShopPage extends React.Component {
   }
 
   render() {
+    const apple;
     const { match } = this.props
 
     return (
