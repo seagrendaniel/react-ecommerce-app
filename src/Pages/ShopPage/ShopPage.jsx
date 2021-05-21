@@ -9,13 +9,15 @@ import { fetchCollectionsStart } from '../../redux/shop/shop.sagas'
 
 
 class ShopPage extends React.Component {
+  
+
   componentDidMount() {
     const { fetchCollectionsStart } = this.props
     fetchCollectionsStart()
   }
 
   render() {
-    const apple;
+    const apple = 'apple'
     const { match } = this.props
 
     return (
